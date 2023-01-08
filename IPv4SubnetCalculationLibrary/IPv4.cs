@@ -4,14 +4,14 @@ namespace IPv4SubnetCalculationLibrary
 {
     public class IPv4
     {
-        private readonly byte[] address = new byte[4];
+        private readonly byte[] Address = new byte[4];
 
         public IPv4(byte a, byte b, byte c, byte d)
         {
-            address[0] = a;
-            address[1] = b;
-            address[2] = c;
-            address[3] = d;
+            Address[0] = a;
+            Address[1] = b;
+            Address[2] = c;
+            Address[3] = d;
         }
 
         public IPv4(string? ipAddress)
@@ -24,7 +24,7 @@ namespace IPv4SubnetCalculationLibrary
             string[] octets = ipAddress.Split('.');
             for (int i = 0; i < 4; i++)
             {
-                address[i] = byte.Parse(octets[i]);
+                Address[i] = byte.Parse(octets[i]);
             }
         }
 
@@ -81,7 +81,7 @@ namespace IPv4SubnetCalculationLibrary
             for (int i = 0; i < 4; i++)
             {
                 // AND-Verknüpfung
-                networkAddress[i] = (byte)(ip.address[i] & subnetMask.address[i]);
+                networkAddress[i] = (byte)(ip.Address[i] & subnetMask.Address[i]);
             }
             return new IPv4(networkAddress[0], networkAddress[1], networkAddress[2], networkAddress[3]);
         }
@@ -94,7 +94,7 @@ namespace IPv4SubnetCalculationLibrary
             // vorhandenen Anzahl möglicher Clients multipliziert 
             for (int i = 0; i < 4; i++)
             {
-                possibleClients *= 256 - subnetMask.address[i];
+                possibleClients *= 256 - subnetMask.Address[i];
             }
 
             return possibleClients - 2; // Netzwerk- und Broadcastadresse abziehen
@@ -102,7 +102,7 @@ namespace IPv4SubnetCalculationLibrary
 
         public override string ToString()
         {
-            return $"{address[0]}.{address[1]}.{address[2]}.{address[3]}";
+            return $"{Address[0]}.{Address[1]}.{Address[2]}.{Address[3]}";
         }
     }
 }
