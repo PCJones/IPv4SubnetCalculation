@@ -46,7 +46,7 @@ namespace IPv4SubnetCalculationLibrary
                 // octet ist integer?
                 if (Int32.TryParse(octet, out int number))
                 {
-                    // octet ist zwischen 0-255?
+                    // octet ist nicht zwischen 0-255?
                     if (number is < 0 or > 255)
                     {
                         return false;
